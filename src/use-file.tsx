@@ -1,10 +1,14 @@
-import { BlobReader, TextWriter, ZipReader } from "@zip.js/zip.js";
-import { parse } from "csv/browser/esm";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 import { useDrop } from "react-dnd";
 import { NativeTypes } from "react-dnd-html5-backend";
 
 export const FileContext = createContext(null);
+
+declare global {
+  interface Window {
+    plausible: any;
+  }
+}
 
 interface NativeFiles {
   files: File[];
@@ -22,13 +26,21 @@ export function useFile() {
     },
   }));
 
-  useEffect(() => {
-    console.debug({ selectedFile });
-  }, [selectedFile]);
+  const plausible = useCallback(function (...rest: any) {
+    (window.plausible.q = window.plausible.q || []).push(...rest);
+  }, []);
+
+  const eventedSetSelectedFile = useCallback(
+    (value: File | undefined) => {
+      plausible("Load file");
+      setSelectedFile(value);
+    },
+    [setSelectedFile, plausible]
+  );
 
   return {
     dropTargetRef,
     selectedFile,
-    setSelectedFile,
+    setSelectedFile: eventedSetSelectedFile,
   };
 }

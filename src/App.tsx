@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App" ref={dropTargetRef}>
       <header>
-        <h1>GTFS / Excel Converter</h1>
+        <h1>GTFS to spreadsheet converter</h1>
       </header>
       {selectedFile ? (
         <Converter selectedFile={selectedFile} onReset={onReset} />

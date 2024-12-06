@@ -1,6 +1,6 @@
 import { BlobReader, Entry, ZipReader } from "@zip.js/zip.js";
 import { useEffect, useState } from "react";
-import { read, utils, WorkBook } from "xlsx";
+import { read, WorkBook } from "xlsx";
 import { Gtfs } from "./Gtfs";
 import { Workbook } from "./Workbook";
 interface ConverterProps {
@@ -72,7 +72,9 @@ export function Converter({ selectedFile, onReset }: ConverterProps) {
   return (
     <div>
       <div>
-        <button onClick={onReset}>Start over</button>
+        <button onClick={onReset} className="plausible-event-name=Start+Over">
+          Start over
+        </button>
       </div>
       {content}
     </div>

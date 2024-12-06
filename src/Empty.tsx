@@ -5,7 +5,16 @@ interface EmptyProps {
 export function Empty({ onSelectFile }: EmptyProps) {
   return (
     <div>
-      <p>This page doesn't upload your file to any servers, it's all local</p>
+      <p>
+        If you have a GTFS file that you would like to edit in a spreadsheet,
+        use this page to convert the GTFS file to an Excel workbook. This also
+        works in reverse: use this page to convert an Excel workbook into a GTFS
+        file.
+      </p>
+      <p>
+        This page performs the conversion in your browser without uploading your
+        files to any server.
+      </p>
       <p>
         Choose a file (or drag the file here)
         <input

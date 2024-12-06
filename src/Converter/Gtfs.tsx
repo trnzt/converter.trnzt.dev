@@ -11,25 +11,17 @@ export function Gtfs({ zipEntries }: GtfsProps) {
   return (
     <div>
       <h2>Convert GTFS to Excel</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>GTFS file name</th>
-            <th>Action</th>
-            <th>Excel sheet name</th>
-          </tr>
-        </thead>
-        <tbody>
-          {zipEntries.map((entry, i) => (
-            <tr key={entry.filename}>
-              <td>{entry.filename}</td>
-              <td>tbd</td>
-              <td>{entry.filename}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <button onClick={convert} disabled={converting}>
+      <p>Found the following files in the given file:</p>
+      <ul>
+        {zipEntries.map((entry) => (
+          <li key={entry.filename}>{entry.filename}</li>
+        ))}
+      </ul>
+      <button
+        onClick={convert}
+        disabled={converting}
+        className="plausible-event-name=Convert+to+Excel+workbook"
+      >
         Convert to Excel workbook
       </button>
       {converting && <>Converting...</>}
