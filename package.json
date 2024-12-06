@@ -1,5 +1,6 @@
 {
-  "name": "gtfs-xlsx-scratch",
+  "name": "converter.trnzt.dev",
+  "homepage": "https://converter.trnzt.dev",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,6 +13,7 @@
     "@types/react-dom": "^18.0.0",
     "@zip.js/zip.js": "^2.7.53",
     "csv": "^6.3.11",
+    "gh-pages": "^6.2.0",
     "react": "^18.3.1",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
@@ -23,6 +25,8 @@
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b main -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
