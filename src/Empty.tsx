@@ -1,3 +1,4 @@
+import converterImg from "./converter-image.png";
 interface EmptyProps {
   onSelectFile?: (file: File) => void;
 }
@@ -6,10 +7,13 @@ export function Empty({ onSelectFile }: EmptyProps) {
   return (
     <div>
       <p>
-        If you have a GTFS file that you would like to edit in a spreadsheet,
-        use this page to convert the GTFS file to an Excel workbook. This also
-        works in reverse: use this page to convert an Excel workbook into a GTFS
-        file.
+        If you have a{" "}
+        <a href="https://gtfs.org/" target="_blank" rel="noreferrer">
+          GTFS
+        </a>{" "}
+        file that you would like to edit in a spreadsheet, use this page to
+        convert the GTFS file to an Excel workbook. This also works in reverse:
+        use this page to convert an Excel workbook into a GTFS file.
       </p>
       <p>
         This page performs the conversion in your browser without uploading your
@@ -29,6 +33,10 @@ export function Empty({ onSelectFile }: EmptyProps) {
           }}
         />
       </p>
+      <img
+        src={converterImg}
+        alt="Screenshot of a GTFS feed unzipped into a directory next to Microsoft Excel with spreadsheet tabs for each of the files"
+      />
     </div>
   );
 }
